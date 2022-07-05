@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head th:replace="plantilla/template :: head">
+
+    <title>ejemplo</title>
+</head>
+<body>
+<header th:replace="plantilla/template :: header">
+</header>
+<h1 th:text="${titulo}"></h1>
+<div class="table-responsive">
+
+    <table class="table table-striped"  >
+        <thead >
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Email</th>
+            <th scope="col">Cumpleaños</th>
+            <th scope="col" >Acciones </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="cl:${contactos}">
+            <th scope="row" th:text="${cl.id}"> </th>
+            <td th:text="${cl.nombre}"> </td>
+            <td th:text="${cl.getTelefono()}"> </td>
+            <td th:text="${cl.getEmail()}"> </td>
+            <td th:text="${cl.getNacimiento()}"> </td>
+
+            <td>
+                <a class="btn btn btn btn-info"
+                   th:text="'Editar'" title="Editar" th:href="@{/contacts/edit/{id} (id=${cl.id})}"> </a>
+
+                <a class="btn btn btn-danger"
+                   th:text="'Eliminar'" title="Eliminar" th:href="@{/contacts/delete/{id} (id=${cl.id})}"
+                   onclick="return confirm('Está seguro de eliminar el registro?');"> </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="plantilla/template :: footer">
+
+</footer>
+
+</body>
+
+</html>

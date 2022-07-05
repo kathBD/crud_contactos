@@ -1,0 +1,86 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<head th:replace="plantilla/template :: head">
+
+    <title>Agenda de contactos - Spring</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap.min.css}" rel="stylesheet">
+
+</head>
+
+<body>
+<header th:replace="plantilla/template :: header">
+</header>
+
+
+
+<!-- Page Content -->
+<div class="container">
+
+
+    <!-- Page Heading/Breadcrumbs -->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/contacts/list}" >Home</a></li>
+        <li class="breadcrumb-item active">Agregar</li>
+    </ol>
+
+    <h2>Creando Contacto</h2>
+
+    <form class="form-horizontal" th:action="@{/contacts/save}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nombre" name="nombre"
+                       placeholder="Ingrese el nombre " autocomplete="off" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="telefono">Teléfono:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese el numero telefonico" required autocomplete="off" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">email:</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese la email del contacto"  required autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="nacimiento">nacimiento:</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" step="any"  id="nacimiento" name="nacimiento" placeholder="Ingrese el nacimiento del contacto"  required autocomplete="off">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-success"> Guardar</button>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer th:replace="plantilla/template :: footer">
+
+</footer>
+
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/jquery.min.js}"></script>
+<script th:src="@{/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
